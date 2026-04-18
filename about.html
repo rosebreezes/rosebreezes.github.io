@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About — 이세진</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #f4f4f0; --text: #1c1c1c; --muted: #aaa; --dim: #ccc;
+      --rule: #dddbd6; --accent: #8B5533;
+    }
+    body {
+      font-family: 'Courier New', 'Noto Sans KR', 'Malgun Gothic', sans-serif;
+      background: var(--bg); color: var(--text); font-size: 13px; line-height: 1.7;
+    }
+
+    /* ── HEADER ── */
+    header {
+      position: sticky; top: 0; z-index: 99; background: var(--bg);
+      display: grid; grid-template-columns: 1fr auto 1fr;
+      align-items: start; padding: 22px 36px 16px;
+    }
+    .h-name { font-family: 'Courier New', monospace; font-size: 12px; letter-spacing: 0.04em; }
+    .h-nav { display: flex; gap: 28px; list-style: none; }
+    .h-nav a {
+      font-family: 'Courier New', monospace; font-size: 12px;
+      color: var(--text); text-decoration: none; letter-spacing: 0.06em;
+    }
+    .h-nav a:hover, .h-nav a.active { text-decoration: underline; text-underline-offset: 3px; }
+    .h-email { text-align: right; }
+    .h-email a {
+      font-family: 'Courier New', monospace; font-size: 12px;
+      color: var(--text); text-decoration: none; letter-spacing: 0.03em;
+    }
+    .h-email a:hover { text-decoration: underline; }
+
+    /* ── PAGE ── */
+    main { padding: 64px 36px 120px; }
+
+    /* Intro */
+    .intro { margin-bottom: 80px; }
+    .intro-name {
+      font-family: 'Courier New', monospace;
+      font-size: 42px; font-weight: normal; letter-spacing: 0.02em; margin-bottom: 14px;
+    }
+    .intro-role { font-size: 13px; letter-spacing: 0.04em; color: #666; }
+    .intro-role em { font-style: normal; color: var(--dim); margin: 0 10px; }
+
+    /* Section */
+    .sec { margin-bottom: 80px; }
+    .sec-title {
+      font-family: 'Courier New', monospace;
+      font-size: 12px; font-weight: bold; letter-spacing: 0.1em;
+      text-transform: uppercase; margin-bottom: 14px;
+    }
+    .rule { border: none; border-top: 1px solid var(--rule); margin-bottom: 40px; }
+
+    /* CV */
+    .cv { display: flex; flex-direction: column; gap: 22px; max-width: 820px; }
+    .cv-row { display: grid; grid-template-columns: 140px 1fr; gap: 20px; }
+    .cv-date {
+      font-family: 'Courier New', monospace; font-size: 11px;
+      color: var(--muted); letter-spacing: 0.03em; padding-top: 2px;
+    }
+    .cv-text { font-size: 13px; line-height: 1.75; }
+    .cv-text .sub { display: block; padding-left: 1.2em; color: #666; margin-top: 3px; }
+    .cv-note { font-family: 'Courier New', monospace; font-size: 10px; color: var(--muted); margin-top: 24px; }
+
+    /* Skills */
+    .skills { display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px; max-width: 900px; }
+    .skill-name {
+      font-family: 'Courier New', monospace; font-size: 13px; font-weight: bold;
+      color: var(--accent); text-decoration: underline; text-underline-offset: 4px;
+      letter-spacing: 0.02em; margin-bottom: 12px;
+    }
+    .skill-text { font-size: 12px; line-height: 1.9; color: #444; }
+
+    /* Experience */
+    .exp { display: flex; flex-direction: column; gap: 44px; max-width: 720px; }
+    .exp-name {
+      font-family: 'Courier New', monospace; font-size: 14px; font-weight: bold;
+      color: var(--accent); text-decoration: underline; text-underline-offset: 4px;
+      letter-spacing: 0.02em; margin-bottom: 12px;
+    }
+    .exp-text { font-size: 12px; line-height: 1.95; color: #444; }
+  </style>
+</head>
+<body>
+
+<header>
+  <span class="h-name">이세진</span>
+  <nav><ul class="h-nav">
+    <li><a href="about.html" class="active">About</a></li>
+    <li><a href="branding.html">Branding</a></li>
+    <li><a href="contents.html">Contents</a></li>
+    <li><a href="marketing.html">Marketing</a></li>
+  </ul></nav>
+  <div class="h-email"><a href="mailto:hello@yourname.com">hello@yourname.com</a></div>
+</header>
+
+<main>
+
+  <section class="intro">
+    <h1 class="intro-name">이세진</h1>
+    <p class="intro-role">Branding<em>·</em>Contents<em>·</em>Writing</p>
+  </section>
+
+  <!-- CV -->
+  <section class="sec">
+    <h2 class="sec-title">CV</h2>
+    <hr class="rule">
+    <div class="cv">
+      <div class="cv-row">
+        <span class="cv-date">2013 – 2014</span>
+        <span class="cv-text">중앙 M&amp;B(현 JTBC) 패션 매거진 &lt;CeCi&gt; 피처팀 프리랜스에디터 (1년)</span>
+      </div>
+      <div class="cv-row">
+        <span class="cv-date">2015 – 2016</span>
+        <span class="cv-text">인터스텔라 디지털 매거진 &lt;피키캐스트&gt; 라이프스타일팀 에디터 (2년)</span>
+      </div>
+      <div class="cv-row">
+        <span class="cv-date">2017 – 2019</span>
+        <span class="cv-text">디자인하우스 라이프스타일 매거진 &lt;행복이가득한집&gt; 주거문화, 음식문화 에디터 (2년)</span>
+      </div>
+      <div class="cv-row">
+        <span class="cv-date">2019 – 현재</span>
+        <span class="cv-text">
+          현대백화점 디지털사업부 온라인식품사업부 TF (4년)
+          <span class="sub">현대백화점 영업전략실 커뮤니케이션팀 (1년)</span>
+          <span class="sub">현대백화점 신사업 TF (1년 6개월)</span>
+        </span>
+      </div>
+    </div>
+    <p class="cv-note">* 정규직 업무만 기재 (프리랜서 활동은 생략하였습니다)</p>
+  </section>
+
+  <!-- Skills -->
+  <section class="sec">
+    <h2 class="sec-title">Skills</h2>
+    <hr class="rule">
+    <div class="skills">
+      <div>
+        <h3 class="skill-name">Discovery &amp; Curation</h3>
+        <p class="skill-text">라이프스타일 전반에 안테나를 세워 기획에 적용합니다. 새로 오픈한 숍, 신제품 소개 칼럼을 오래 진행해 업계 새로운 흐름을 놓치지 않고, 콘텐츠를 분석하는 훈련을 했습니다.</p>
+      </div>
+      <div>
+        <h3 class="skill-name">Perspective</h3>
+        <p class="skill-text">지면 기사, 카드 뉴스, GIF, 바이럴 영상까지. 다양한 플랫폼에서 콘텐츠를 기획하고 제작한 경험이 있습니다. 프로젝트 환경에 알맞은 브랜드 고유한 관점을 찾아 사용자에게 어필합니다.</p>
+      </div>
+      <div>
+        <h3 class="skill-name">Communication</h3>
+        <p class="skill-text">에디터는 1년차도 촬영 현장의 리더 역할을 합니다. 오랜 에디터와 인하우스 마케터 경험으로 다양한 전문가와 협업에 능숙하며, 예기치 못한 변수에도 유연하게 대처합니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience -->
+  <section class="sec">
+    <h2 class="sec-title">Experience</h2>
+    <hr class="rule">
+    <div class="exp">
+      <div>
+        <h3 class="exp-name">Living</h3>
+        <p class="exp-text">리빙 분야는 계층과 문화에 따라 다양한 소비 패턴을 지녔습니다. &lt;피키캐스트&gt;에서는 1천 원대 다이소 상품을 리폼한 D.I.Y. 영상 콘텐츠로 40만 조회수를 기록하고, &lt;행복이가득한집&gt;에서는 충성도 높은 독자 층을 위해 해외 프리미엄 가구 브랜드 대표를 인터뷰했습니다. 이외 다양한 타겟층의 라이프스타일을 관찰하고 고민해 넓은 범주의 콘텐츠를 만들어왔습니다.</p>
+      </div>
+      <div>
+        <h3 class="exp-name">Food</h3>
+        <p class="exp-text">음식 콘텐츠를 제작하면서 무거운 책임감을 배웠습니다. 건강과 문화에 직결된 콘텐츠인 만큼 사실 확인, 품질 검증 단계를 늘 진행하며 단어 하나도 예민하게 작성합니다. 이외에도 셰프와 협업하며 메뉴 개발, 세팅에 직접 참여하면서 스스로 많은 성장한 분야이기도 합니다.</p>
+      </div>
+      <div>
+        <h3 class="exp-name">People</h3>
+        <p class="exp-text">프로젝트에 알맞은 인물을 선정하고, 프로젝트에 참여할 수 있도록 설득하는 일에 자신 있습니다. 바이럴이 중요한 디지털 플랫폼에는 인플루언서를 섭외해 매체 인지도를 높였습니다. 구매력이 높은 독자를 보유하고 있는 &lt;행복&gt;에서는 국내외 아티스트, 셰프, 요리 연구가, 박사 등 전문가의 이야기를 소개하며 콘텐츠의 결을 고급스럽게 다듬는 법을 익혔습니다.</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+  <script src="cursor.js"></script>
+</body>
+</html>

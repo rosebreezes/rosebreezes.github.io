@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Marketing — 이세진</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #f4f4f0; --text: #1c1c1c; --muted: #aaa; --dim: #ccc;
+      --rule: #dddbd6; --card-bg: #e5e3de; --accent: #8B5533;
+    }
+    body {
+      font-family: 'Courier New', 'Noto Sans KR', 'Malgun Gothic', sans-serif;
+      background: var(--bg); color: var(--text); font-size: 13px; line-height: 1.7;
+    }
+
+    /* ── HEADER ── */
+    header {
+      position: sticky; top: 0; z-index: 99; background: var(--bg);
+      display: grid; grid-template-columns: 1fr auto 1fr;
+      align-items: start; padding: 22px 36px 16px;
+    }
+    .h-name { font-family: 'Courier New', monospace; font-size: 12px; letter-spacing: 0.04em; }
+    .h-nav { display: flex; gap: 28px; list-style: none; }
+    .h-nav a {
+      font-family: 'Courier New', monospace; font-size: 12px;
+      color: var(--text); text-decoration: none; letter-spacing: 0.06em;
+    }
+    .h-nav a:hover, .h-nav a.active { text-decoration: underline; text-underline-offset: 3px; }
+    .h-email { text-align: right; }
+    .h-email a {
+      font-family: 'Courier New', monospace; font-size: 12px;
+      color: var(--text); text-decoration: none; letter-spacing: 0.03em;
+    }
+    .h-email a:hover { text-decoration: underline; }
+
+    /* ── PAGE ── */
+    main { padding: 56px 36px 120px; }
+
+    .page-label {
+      font-family: 'Courier New', monospace; font-size: 10px;
+      color: var(--muted); letter-spacing: 0.12em; text-transform: uppercase;
+      margin-bottom: 48px;
+    }
+
+    /* Project */
+    .project { margin-bottom: 96px; padding-bottom: 96px; border-bottom: 1px solid var(--rule); }
+    .project:last-child { border-bottom: none; margin-bottom: 0; }
+
+    .proj-head { display: flex; align-items: baseline; gap: 14px; margin-bottom: 14px; }
+    .proj-num { font-family: 'Courier New', monospace; font-size: 10px; color: var(--muted); letter-spacing: 0.05em; }
+    .proj-title { font-family: 'Courier New', monospace; font-size: 17px; font-weight: normal; letter-spacing: 0.02em; flex: 1; }
+    .proj-period { font-family: 'Courier New', monospace; font-size: 10px; color: var(--muted); white-space: nowrap; }
+
+    .proj-body { display: grid; grid-template-columns: 58% 1fr; gap: 44px; margin-top: 32px; }
+
+    .proj-img { background: var(--card-bg); overflow: hidden; aspect-ratio: 4 / 3; }
+    .proj-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    .proj-img-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .proj-img-pair .proj-img { aspect-ratio: 4 / 5; }
+
+    .proj-info { display: flex; flex-direction: column; gap: 32px; }
+
+    .info-label {
+      font-family: 'Courier New', monospace; font-size: 11px; font-weight: bold;
+      letter-spacing: 0.08em; margin-bottom: 12px;
+      border-bottom: 1px solid var(--rule); padding-bottom: 7px;
+    }
+    .info-text { font-size: 12px; line-height: 1.9; color: #444; }
+
+    .task-list { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+    .task-list li { font-size: 12px; line-height: 1.75; color: #444; }
+
+    .award-tag {
+      display: inline-block; font-family: 'Courier New', monospace;
+      font-size: 10px; color: var(--accent); letter-spacing: 0.04em;
+      border: 1px solid var(--accent); padding: 3px 8px; margin-top: 12px; margin-right: 6px;
+    }
+
+    .rule { border: none; border-top: 1px solid var(--rule); }
+  </style>
+</head>
+<body>
+
+<header>
+  <span class="h-name">이세진</span>
+  <nav><ul class="h-nav">
+    <li><a href="about.html">About</a></li>
+    <li><a href="branding.html">Branding</a></li>
+    <li><a href="contents.html">Contents</a></li>
+    <li><a href="marketing.html" class="active">Marketing</a></li>
+  </ul></nav>
+  <div class="h-email"><a href="mailto:hello@yourname.com">hello@yourname.com</a></div>
+</header>
+
+<main>
+  <p class="page-label">III — 콘텐츠 전략·운영</p>
+
+  <!-- Project 01 -->
+  <article class="project">
+    <div class="proj-head">
+      <span class="proj-num">01.</span>
+      <h2 class="proj-title">매거진 서비스 기획</h2>
+      <span class="proj-period">2019.06 – 2020.07</span>
+    </div>
+    <hr class="rule" style="margin-bottom:32px;">
+    <div class="proj-body">
+      <div class="proj-img-pair">
+        <div class="proj-img"><img src="https://picsum.photos/seed/mkt01a/600/750" alt="매거진 서비스 1"></div>
+        <div class="proj-img"><img src="https://picsum.photos/seed/mkt01b/600/750" alt="매거진 서비스 2"></div>
+      </div>
+      <div class="proj-info">
+        <div>
+          <h3 class="info-label">프로젝트</h3>
+          <p class="info-text">콘텐츠 서비스 '매거진' 론칭</p>
+          <p class="info-text" style="margin-top:12px;">상품을 더욱 가치 있게 만드는 식문화 콘텐츠 서비스입니다. 셀링 포인트를 발굴해 현대식품관 고객의 눈높이에 맞는 스토리텔링 콘텐츠로 전달합니다.</p>
+        </div>
+        <div>
+          <h3 class="info-label">담당 업무</h3>
+          <ul class="task-list">
+            <li>1 서비스 기획 — 운영 전략 수립, 서비스 정의서 작성</li>
+            <li>2 시스템 개발 — 개발자, 디자이너, 퍼블리셔 커뮤니케이션</li>
+            <li>3 콘텐츠 운영 — 콘텐츠 방향성 수립, 톤앤매너 가이드 제작</li>
+            <li>4 마케팅 — 일정 및 수치 관리, 콘텐츠별 노출 구좌 계획 및 내부 매체 마케팅 플래닝</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Project 02 -->
+  <article class="project">
+    <div class="proj-head">
+      <span class="proj-num">02.</span>
+      <h2 class="proj-title">상세페이지 기획</h2>
+      <span class="proj-period">2019.06 – 진행중</span>
+    </div>
+    <hr class="rule" style="margin-bottom:32px;">
+    <div class="proj-body">
+      <div class="proj-img-pair">
+        <div class="proj-img"><img src="https://picsum.photos/seed/mkt02a/600/750" alt="상세페이지 1"></div>
+        <div class="proj-img"><img src="https://picsum.photos/seed/mkt02b/600/750" alt="상세페이지 2"></div>
+      </div>
+      <div class="proj-info">
+        <div>
+          <h3 class="info-label">프로젝트</h3>
+          <p class="info-text">커머스 콘텐츠 '상세페이지' 기획, 운영</p>
+          <p class="info-text" style="margin-top:12px;">바이어가 직접 설명하는 듯한 톤앤매너와 객관적 정보 전달과 말맛으로 오감을 자극할 수 있도록 상세페이지 원고 가이드를 수립했습니다.</p>
+        </div>
+        <div>
+          <h3 class="info-label">담당 업무</h3>
+          <ul class="task-list">
+            <li>1 상세페이지 구조 기획</li>
+            <li>2 보이스 톤앤매너 수립, 원고 가이드 작성</li>
+            <li>3 오픈 4000SKU 원고 운영, 에디터 · 촬영팀 커뮤니케이션</li>
+            <li>4 현재 촬영 운영 중</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Project 03 -->
+  <article class="project">
+    <div class="proj-head">
+      <span class="proj-num">03.</span>
+      <h2 class="proj-title">새벽시장리포트 프로젝트 매니징</h2>
+      <span class="proj-period">2019.10 – 2021.11</span>
+    </div>
+    <hr class="rule" style="margin-bottom:32px;">
+    <div class="proj-body">
+      <div class="proj-img-pair">
+        <div class="proj-img"><img src="https://picsum.photos/seed/mkt03a/600/750" alt="새벽시장리포트 앱"></div>
+        <div class="proj-img"><img src="https://picsum.photos/seed/mkt03b/600/750" alt="새벽시장리포트 단행본"></div>
+      </div>
+      <div class="proj-info">
+        <div>
+          <h3 class="info-label">프로젝트</h3>
+          <p class="info-text">콘텐츠 서비스 '새벽시장 리포트' 론칭, 운영, 제작</p>
+          <p class="info-text" style="margin-top:12px;">현대식품관의 신선 바이어는 새벽시장에 출근해 직접 상품을 검수하고 시황을 작성합니다. 내부에서만 공유하던 신선하고 정확한 정보를 단신 뉴스 성격의 콘텐츠 서비스로 기획했습니다.</p>
+          <div style="margin-top:14px;">
+            <span class="award-tag">수상 — 사내 C&amp;C 4분기 포상</span>
+            <span class="award-tag">기사화 — 연합뉴스, 월간〈디자인〉5월호</span>
+          </div>
+        </div>
+        <div>
+          <h3 class="info-label">담당 업무</h3>
+          <ul class="task-list">
+            <li>1 서비스 기획 — 운영 전략 수립, 서비스 정의서 작성</li>
+            <li>2 시스템 개발 — 개발자, 디자이너, 퍼블리셔 커뮤니케이션</li>
+            <li>3 콘텐츠 운영 — 콘텐츠 방향성 수립, 톤앤매너 가이드 제작</li>
+            <li>4 일정 및 수치 관리</li>
+            <li>5 원고 작성 및 발행 — 매일 아침 10시</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Project 04 -->
+  <article class="project">
+    <div class="proj-head">
+      <span class="proj-num">04.</span>
+      <h2 class="proj-title">현대식품문학 프로젝트 매니징</h2>
+      <span class="proj-period">2019.06 – 진행중</span>
+    </div>
+    <hr class="rule" style="margin-bottom:32px;">
+    <div class="proj-body">
+      <div class="proj-img-pair">
+        <div class="proj-img"><img src="https://picsum.photos/seed/mkt04a/600/750" alt="현대식품문학 1"></div>
+        <div class="proj-img"><img src="https://picsum.photos/seed/mkt04b/600/750" alt="현대식품문학 2"></div>
+      </div>
+      <div class="proj-info">
+        <div>
+          <h3 class="info-label">프로젝트</h3>
+          <p class="info-text">ID 콘텐츠 '현대식품문학' 기획, 제작, 마케팅</p>
+          <p class="info-text" style="margin-top:12px;">한 문학을 대표하는 작가들이 현대식품관만의 기준으로 선별한 상품을 문학으로 소개하는 오리지널 콘텐츠입니다. 작품 말미에는 소설 속 등장한 상품과 연계 콘텐츠로 연결시켜 1인당 앱 체류시간이 30% 증가했습니다.</p>
+          <div style="margin-top:14px;">
+            <span class="award-tag">기사화 — 한겨레, 네이버〈디자인프레스〉</span>
+          </div>
+        </div>
+        <div>
+          <h3 class="info-label">담당 업무</h3>
+          <ul class="task-list">
+            <li>1 기획 및 섭외, 원고 편집 및 발행</li>
+            <li>2 디자이너 · MD 커뮤니케이션</li>
+            <li>3 홍보 자료 작성</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </article>
+
+</main>
+  <script src="cursor.js"></script>
+</body>
+</html>

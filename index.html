@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>이름 — Portfolio</title>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg:    #f4f4f0;
+      --text:  #1c1c1c;
+      --muted: #aaa;
+      --dim:   #ccc;
+      --card-bg: #e5e3de;
+    }
+
+    body {
+      font-family: 'Courier New', Courier, monospace;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    /* ── HEADER ─────────────────────────────────── */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 99;
+      background: var(--bg);
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: start;
+      padding: 22px 36px 16px;
+    }
+
+    .h-name {
+      font-size: 12px;
+      letter-spacing: 0.04em;
+    }
+
+    .h-nav {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .h-nav a {
+      font-size: 12px;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: 0.06em;
+    }
+
+    .h-nav a:hover,
+    .h-nav a.active {
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .h-email {
+      text-align: right;
+    }
+
+    .h-email a {
+      font-size: 12px;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: 0.03em;
+    }
+
+    .h-email a:hover {
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    /* ── GRID ────────────────────────────────────── */
+    .grid-wrap {
+      padding: 48px 36px 120px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      column-gap: 24px;
+    }
+
+    /* Card base */
+    .card {
+      cursor: pointer;
+      padding-bottom: 40px;
+    }
+
+    /* Number */
+    .card-no {
+      display: block;
+      font-size: 10px;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+      margin-bottom: 10px;
+    }
+
+    /* Thumbnail — uniform 3:4 portrait */
+    .card-thumb {
+      overflow: hidden;
+      background: var(--card-bg);
+      aspect-ratio: 3 / 4;
+    }
+
+    .card-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.65s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .card:hover .card-thumb img {
+      transform: scale(1.05);
+    }
+
+    /* Info */
+    .card-body { margin-top: 13px; }
+
+    .card-title {
+      font-size: 11px;
+      letter-spacing: 0.04em;
+      color: var(--text);
+    }
+
+    .card-sub {
+      font-size: 10px;
+      color: var(--dim);
+      margin-top: 5px;
+      letter-spacing: 0.03em;
+    }
+
+    /* ── CARD FADE-IN ───────────────────────────── */
+    .card {
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .card.visible { opacity: 1; transform: none; }
+    .card.visible:hover { opacity: 0.82; }
+
+    /* ── SCROLL TEXT ─────────────────────────────
+       Large ghost titles drift in from left / right
+       as the user scrolls past each row of cards.
+    ─────────────────────────────────────────────── */
+    .grid-wrap { position: relative; overflow: hidden; }
+
+    .scroll-title {
+      position: absolute;
+      font-size: clamp(32px, 7vw, 96px);
+      font-family: 'Courier New', Courier, monospace;
+      color: var(--text);
+      opacity: 0;
+      white-space: nowrap;
+      pointer-events: none;
+      letter-spacing: -0.01em;
+      line-height: 1;
+      user-select: none;
+      transition: opacity 0.9s ease, transform 0.9s ease;
+    }
+
+    .scroll-title.from-left  { left: 0;   transform: translateX(-48px); }
+    .scroll-title.from-right { right: 0;  transform: translateX(48px);  text-align: right; }
+
+    .scroll-title.visible {
+      opacity: 0.055;
+      transform: translateX(0);
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <span class="h-name">이세진</span>
+  <nav>
+    <ul class="h-nav">
+      <li><a href="about.html">About</a></li>
+      <li><a href="branding.html">Branding</a></li>
+      <li><a href="contents.html">Contents</a></li>
+      <li><a href="marketing.html">Marketing</a></li>
+    </ul>
+  </nav>
+  <div class="h-email">
+    <a href="mailto:hello@yourname.com">hello@yourname.com</a>
+  </div>
+</header>
+
+<section class="grid-wrap">
+  <div class="grid" id="grid"></div>
+</section>
+
+<script>
+  const projects = [
+    { id:1,  title:"Ekonika × Cosmoscow", cat:"Commercial",  year:"2024" },
+    { id:2,  title:"Visual Research",      cat:"Photography", year:"2024" },
+    { id:3,  title:"Still-life Study",     cat:"Art Work",    year:"2023" },
+    { id:4,  title:"Prisakaru",            cat:"Branding",    year:"2023" },
+    { id:5,  title:"Object No. 7",         cat:"Still Life",  year:"2023" },
+    { id:6,  title:"Soft Geometry",        cat:"Photography", year:"2022" },
+    { id:7,  title:"Stone & Gold",         cat:"Commercial",  year:"2022" },
+    { id:8,  title:"White Matter",         cat:"Art Work",    year:"2022" },
+    { id:9,  title:"Archive 001",          cat:"Photography", year:"2021" },
+    { id:10, title:"Form Studies",         cat:"Branding",    year:"2021" },
+    { id:11, title:"Light Residue",        cat:"Art Work",    year:"2021" },
+    { id:12, title:"Material Surface",     cat:"Still Life",  year:"2020" },
+  ];
+
+  const grid = document.getElementById('grid');
+
+  projects.forEach((p, i) => {
+    const n = String(i + 1).padStart(2, '0');
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.innerHTML = `
+      <span class="card-no">${n}.</span>
+      <div class="card-thumb">
+        <img src="https://picsum.photos/seed/port${p.id}a/600/800" alt="${p.title}" loading="lazy">
+      </div>
+      <div class="card-body">
+        <div class="card-title">${p.title}</div>
+        <div class="card-sub">${p.cat} — ${p.year}</div>
+      </div>
+    `;
+    card.addEventListener('click', () => {
+      location.href = `project.html?id=${p.id}`;
+    });
+    grid.appendChild(card);
+  });
+
+  /* ── Card fade-in observer ── */
+  const cardObserver = new IntersectionObserver(
+    entries => entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        cardObserver.unobserve(e.target);
+      }
+    }),
+    { threshold: 0.06 }
+  );
+  document.querySelectorAll('.card').forEach(c => cardObserver.observe(c));
+
+  /* ── Scroll title injection ──
+     After each row (every 4 cards), place a large ghost
+     project title from a different project in the background.
+  ── */
+  const wrap = document.getElementById('grid');
+  const cards = Array.from(wrap.querySelectorAll('.card'));
+
+  // Pick titles from "other" projects to show as ghost text
+  const ghostTitles = [
+    projects[1].title,
+    projects[4].title,
+    projects[8].title,
+  ];
+  const sides = ['from-left', 'from-right', 'from-left'];
+
+  ghostTitles.forEach((txt, gi) => {
+    // Anchor ghost text below each row-end card (row 1 → after card 3, etc.)
+    const anchorCard = cards[Math.min((gi + 1) * 4 - 1, cards.length - 1)];
+
+    const el = document.createElement('div');
+    el.className = `scroll-title ${sides[gi]}`;
+    el.textContent = txt;
+
+    // Insert after the anchor card's row — wrap is relative, so we'll
+    // position it via a wrapper trick: insert into a zero-height row.
+    const spacer = document.createElement('div');
+    spacer.style.cssText = 'grid-column: 1 / -1; height: 0; position: relative; overflow: visible;';
+    spacer.appendChild(el);
+
+    // Position vertically centred on the spacer
+    el.style.top = '-0.6em';
+
+    // Insert spacer after the anchor card in the grid
+    anchorCard.after(spacer);
+
+    const titleObserver = new IntersectionObserver(
+      entries => entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          titleObserver.unobserve(e.target);
+        }
+      }),
+      { threshold: 0 }
+    );
+    titleObserver.observe(el);
+  });
+</script>
+
+  <script src="cursor.js"></script>
+</body>
+</html>

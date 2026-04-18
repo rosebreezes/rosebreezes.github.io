@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project — Portfolio</title>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg:    #f4f4f0;
+      --text:  #1c1c1c;
+      --muted: #aaa;
+      --dim:   #ccc;
+      --rule:  #dddbd6;
+      --card-bg: #e5e3de;
+    }
+
+    body {
+      font-family: 'Courier New', Courier, monospace;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    /* ── HEADER ─────────────────────────────────── */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 99;
+      background: var(--bg);
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: start;
+      padding: 22px 36px 16px;
+    }
+
+    .h-name { font-size: 12px; letter-spacing: 0.04em; }
+
+    .h-nav {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .h-nav a {
+      font-size: 12px;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: 0.06em;
+    }
+
+    .h-nav a:hover,
+    .h-nav a.active {
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .h-email { text-align: right; }
+
+    .h-email a {
+      font-size: 12px;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: 0.03em;
+    }
+
+    .h-email a:hover {
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    /* ── PAGE ────────────────────────────────────── */
+    .page {
+      padding: 40px 36px 100px;
+    }
+
+    /* Back */
+    .back {
+      display: inline-block;
+      font-size: 11px;
+      color: var(--muted);
+      text-decoration: none;
+      letter-spacing: 0.06em;
+      margin-bottom: 44px;
+      transition: color 0.2s;
+    }
+
+    .back:hover { color: var(--text); }
+
+    /* Project meta: title left, details right */
+    .proj-meta {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 52px;
+      align-items: end;
+    }
+
+    .proj-title {
+      font-size: 30px;
+      font-weight: normal;
+      letter-spacing: 0.03em;
+      line-height: 1.15;
+    }
+
+    .detail-table { width: 100%; }
+
+    .detail-row {
+      display: flex;
+      justify-content: space-between;
+      border-top: 1px solid var(--rule);
+      padding: 9px 0 7px;
+      font-size: 11px;
+      letter-spacing: 0.04em;
+    }
+
+    .detail-label { color: var(--muted); }
+
+    /* Hero */
+    .hero {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      background: var(--card-bg);
+      margin-bottom: 52px;
+    }
+
+    .hero img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Description */
+    .proj-desc {
+      max-width: 560px;
+      font-size: 12px;
+      line-height: 1.9;
+      color: #555;
+      letter-spacing: 0.02em;
+      margin-bottom: 64px;
+    }
+
+    /* Gallery */
+    .gallery-label {
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 80px;
+    }
+
+    .g-item {
+      overflow: hidden;
+      background: var(--card-bg);
+      cursor: pointer;
+      transition: opacity 0.25s;
+    }
+
+    .g-item:hover { opacity: 0.85; }
+
+    .g-item:nth-child(odd)  { aspect-ratio: 3 / 4; }
+    .g-item:nth-child(even) { aspect-ratio: 4 / 3; }
+
+    .g-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.55s ease;
+    }
+
+    .g-item:hover img { transform: scale(1.04); }
+
+    /* Prev / Next nav */
+    .proj-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid var(--rule);
+      padding-top: 24px;
+    }
+
+    .proj-nav a {
+      font-size: 11px;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      transition: opacity 0.2s;
+    }
+
+    .proj-nav a:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+    .proj-nav .all {
+      color: var(--muted);
+      font-size: 10px;
+      letter-spacing: 0.08em;
+    }
+
+    /* Lightbox */
+    #lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(20,20,18,0.92);
+      z-index: 999;
+      align-items: center;
+      justify-content: center;
+      cursor: zoom-out;
+    }
+
+    #lightbox.open { display: flex; }
+
+    #lightbox img {
+      max-width: 90vw;
+      max-height: 90vh;
+      object-fit: contain;
+      display: block;
+    }
+
+    #lightbox .lb-close {
+      position: absolute;
+      top: 24px;
+      right: 32px;
+      font-size: 20px;
+      color: #fff;
+      cursor: pointer;
+      letter-spacing: 0.04em;
+      font-family: 'Courier New', monospace;
+      background: none;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <span class="h-name">이세진</span>
+  <nav>
+    <ul class="h-nav">
+      <li><a href="about.html">About</a></li>
+      <li><a href="branding.html">Branding</a></li>
+      <li><a href="contents.html">Contents</a></li>
+      <li><a href="marketing.html">Marketing</a></li>
+    </ul>
+  </nav>
+  <div class="h-email">
+    <a href="mailto:hello@yourname.com">hello@yourname.com</a>
+  </div>
+</header>
+
+<div class="page">
+  <a class="back" href="index.html">← All Projects</a>
+
+  <div class="proj-meta" id="projMeta"></div>
+
+  <div class="hero">
+    <img id="heroImg" src="" alt="">
+  </div>
+
+  <p class="proj-desc">
+    This project explores the intersection of material culture and visual language.
+    Each object was carefully selected and arranged to create a dialogue between
+    texture, form, and negative space. The work was developed over three months in
+    close collaboration with the client, resulting in a series that challenges
+    conventional approaches to still-life photography and commercial imagery —
+    finding the poetic within the utilitarian.
+  </p>
+
+  <p class="gallery-label">Images</p>
+  <div class="gallery" id="gallery"></div>
+
+  <nav class="proj-nav">
+    <a href="#" id="prevLink">← Prev</a>
+    <a href="index.html" class="all">All Projects</a>
+    <a href="#" id="nextLink">Next →</a>
+  </nav>
+</div>
+
+<!-- Lightbox -->
+<div id="lightbox">
+  <button class="lb-close" id="lbClose">✕</button>
+  <img id="lbImg" src="" alt="">
+</div>
+
+<script>
+  const projects = [
+    { id:1,  title:"Ekonika × Cosmoscow", cat:"Commercial",  year:"2024", client:"Ekonika" },
+    { id:2,  title:"Visual Research",      cat:"Photography", year:"2024", client:"Self-initiated" },
+    { id:3,  title:"Still-life Study",     cat:"Art Work",    year:"2023", client:"Gallery Nord" },
+    { id:4,  title:"Prisakaru",            cat:"Branding",    year:"2023", client:"Prisakaru Studio" },
+    { id:5,  title:"Object No. 7",         cat:"Still Life",  year:"2023", client:"Self-initiated" },
+    { id:6,  title:"Soft Geometry",        cat:"Photography", year:"2022", client:"Form Magazine" },
+    { id:7,  title:"Stone & Gold",         cat:"Commercial",  year:"2022", client:"Aurum Studio" },
+    { id:8,  title:"White Matter",         cat:"Art Work",    year:"2022", client:"Group Show" },
+    { id:9,  title:"Archive 001",          cat:"Photography", year:"2021", client:"Self-initiated" },
+    { id:10, title:"Form Studies",         cat:"Branding",    year:"2021", client:"Studio Forma" },
+    { id:11, title:"Light Residue",        cat:"Art Work",    year:"2021", client:"Solo Exhibition" },
+    { id:12, title:"Material Surface",     cat:"Still Life",  year:"2020", client:"Self-initiated" },
+  ];
+
+  const params = new URLSearchParams(location.search);
+  const id     = parseInt(params.get('id')) || 1;
+  const idx    = projects.findIndex(p => p.id === id);
+  const p      = projects[idx >= 0 ? idx : 0];
+
+  document.title = `${p.title} — Portfolio`;
+
+  /* Hero */
+  const heroImg = document.getElementById('heroImg');
+  heroImg.src = `https://picsum.photos/seed/hero${p.id}z/1400/800`;
+  heroImg.alt = p.title;
+
+  /* Meta */
+  document.getElementById('projMeta').innerHTML = `
+    <h1 class="proj-title">${p.title}</h1>
+    <div class="detail-table">
+      <div class="detail-row">
+        <span class="detail-label">Category</span><span>${p.cat}</span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label">Year</span><span>${p.year}</span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label">Client</span><span>${p.client}</span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label">Role</span><span>Art Direction, Photography</span>
+      </div>
+    </div>
+  `;
+
+  /* Gallery */
+  const gallery = document.getElementById('gallery');
+  for (let i = 1; i <= 6; i++) {
+    const src = `https://picsum.photos/seed/gal${p.id}n${i}/800/1000`;
+    const item = document.createElement('div');
+    item.className = 'g-item';
+    item.innerHTML = `<img src="${src}" alt="Image ${i}" loading="lazy">`;
+    item.addEventListener('click', () => openLightbox(src));
+    gallery.appendChild(item);
+  }
+
+  /* Prev / Next */
+  const prev = projects[(idx - 1 + projects.length) % projects.length];
+  const next = projects[(idx + 1) % projects.length];
+  document.getElementById('prevLink').href = `project.html?id=${prev.id}`;
+  document.getElementById('prevLink').textContent = `← ${prev.title}`;
+  document.getElementById('nextLink').href = `project.html?id=${next.id}`;
+  document.getElementById('nextLink').textContent = `${next.title} →`;
+
+  /* Lightbox */
+  const lightbox = document.getElementById('lightbox');
+  const lbImg    = document.getElementById('lbImg');
+
+  function openLightbox(src) {
+    lbImg.src = src;
+    lightbox.classList.add('open');
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove('open');
+    lbImg.src = '';
+  }
+
+  document.getElementById('lbClose').addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+</script>
+
+  <script src="cursor.js"></script>
+</body>
+</html>
