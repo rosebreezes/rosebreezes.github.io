@@ -1,3 +1,4 @@
+<!--
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -24,7 +25,6 @@
       line-height: 1.5;
     }
 
-    /* ── HEADER ─────────────────────────────────── */
     header {
       position: sticky;
       top: 0;
@@ -71,12 +71,10 @@
       text-underline-offset: 3px;
     }
 
-    /* ── PAGE ────────────────────────────────────── */
     .page {
       padding: 40px 36px 100px;
     }
 
-    /* Back */
     .back {
       display: inline-block;
       font-size: 11px;
@@ -89,7 +87,6 @@
 
     .back:hover { color: var(--text); }
 
-    /* Project meta: title left, details right */
     .proj-meta {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -118,7 +115,6 @@
 
     .detail-label { color: var(--muted); }
 
-    /* Hero */
     .hero {
       width: 100%;
       aspect-ratio: 16 / 9;
@@ -134,7 +130,6 @@
       display: block;
     }
 
-    /* Description */
     .proj-desc {
       max-width: 560px;
       font-size: 12px;
@@ -144,7 +139,6 @@
       margin-bottom: 64px;
     }
 
-    /* Gallery */
     .gallery-label {
       font-size: 10px;
       letter-spacing: 0.1em;
@@ -182,7 +176,6 @@
 
     .g-item:hover img { transform: scale(1.04); }
 
-    /* Prev / Next nav */
     .proj-nav {
       display: flex;
       justify-content: space-between;
@@ -207,7 +200,6 @@
       letter-spacing: 0.08em;
     }
 
-    /* Lightbox */
     #lightbox {
       display: none;
       position: fixed;
@@ -288,7 +280,6 @@
   </nav>
 </div>
 
-<!-- Lightbox -->
 <div id="lightbox">
   <button class="lb-close" id="lbClose">✕</button>
   <img id="lbImg" src="" alt="">
@@ -317,12 +308,10 @@
 
   document.title = `${p.title} — Portfolio`;
 
-  /* Hero */
   const heroImg = document.getElementById('heroImg');
   heroImg.src = `https://picsum.photos/seed/hero${p.id}z/1400/800`;
   heroImg.alt = p.title;
 
-  /* Meta */
   document.getElementById('projMeta').innerHTML = `
     <h1 class="proj-title">${p.title}</h1>
     <div class="detail-table">
@@ -341,7 +330,6 @@
     </div>
   `;
 
-  /* Gallery */
   const gallery = document.getElementById('gallery');
   for (let i = 1; i <= 6; i++) {
     const src = `https://picsum.photos/seed/gal${p.id}n${i}/800/1000`;
@@ -352,7 +340,6 @@
     gallery.appendChild(item);
   }
 
-  /* Prev / Next */
   const prev = projects[(idx - 1 + projects.length) % projects.length];
   const next = projects[(idx + 1) % projects.length];
   document.getElementById('prevLink').href = `project.html?id=${prev.id}`;
@@ -360,7 +347,6 @@
   document.getElementById('nextLink').href = `project.html?id=${next.id}`;
   document.getElementById('nextLink').textContent = `${next.title} →`;
 
-  /* Lightbox */
   const lightbox = document.getElementById('lightbox');
   const lbImg    = document.getElementById('lbImg');
 
@@ -382,3 +368,4 @@
   <script src="cursor.js"></script>
 </body>
 </html>
+-->

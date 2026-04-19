@@ -1,9 +1,4 @@
-/* =====================================================
-   RESPONSIVE — 이세진 포트폴리오
-   모든 페이지에 공통 적용 (style 블록 뒤에 로드)
-   ===================================================== */
-
-/* ── Tablet (≤ 900px) ─────────────────────────────── */
+/*
 @media (max-width: 900px) {
   header {
     padding-left: 24px;
@@ -15,19 +10,15 @@
     padding-right: 24px;
   }
 
-  /* index 그리드 3열 */
   .grid {
     grid-template-columns: repeat(3, 1fr);
   }
 
-  /* 프로젝트 바디 gap 축소 */
   .proj-body { gap: 28px; }
 }
 
-/* ── Mobile (≤ 680px) ─────────────────────────────── */
 @media (max-width: 680px) {
 
-  /* ── 헤더: 2행으로 전환 ── */
   header {
     grid-template-columns: 1fr auto;
     grid-template-rows: auto auto;
@@ -44,7 +35,6 @@
     flex-wrap: wrap;
   }
 
-  /* ── 공통 패딩 ── */
   main, .page {
     padding: 32px 20px 80px;
   }
@@ -53,20 +43,17 @@
     padding: 28px 20px 80px;
   }
 
-  /* ── index.html 그리드: 2열, 스태거 제거 ── */
   .grid {
     grid-template-columns: repeat(2, 1fr);
     column-gap: 14px;
   }
 
-  /* 스태거 오프셋 전부 초기화 (specificity 우위 확보) */
   .grid .card {
     margin-top: 0;
   }
 
   .card-title { font-size: 10px; }
 
-  /* ── About ── */
   .intro-name { font-size: 28px; }
   .intro-role { font-size: 12px; }
 
@@ -82,18 +69,15 @@
     gap: 32px;
   }
 
-  /* ── Branding / Marketing / Contents 프로젝트 ── */
   .proj-body {
     grid-template-columns: 1fr;
     gap: 20px;
   }
 
-  /* 단일 이미지는 16:9으로 */
   .proj-body > .proj-img {
     aspect-ratio: 16 / 9;
   }
 
-  /* 이미지 페어는 유지 */
   .proj-img-pair {
     gap: 8px;
   }
@@ -116,7 +100,6 @@
 
   .proj-period { width: 100%; }
 
-  /* ── Contents 상세 2열 → 1열 ── */
   .proj-cols {
     grid-template-columns: 1fr;
     gap: 24px;
@@ -125,13 +108,11 @@
   .proj-title-lg { font-size: 13px; }
   .proj-head .proj-title-lg { width: 100%; flex: none; }
 
-  /* ── project.html 상세 페이지 ── */
   .proj-meta {
     grid-template-columns: 1fr;
     gap: 28px;
   }
 
-  /* project.html의 큰 타이틀 */
   .proj-meta .proj-title { font-size: 22px; width: auto; }
 
   .hero { aspect-ratio: 4 / 3; }
@@ -144,15 +125,12 @@
   .proj-nav { flex-wrap: wrap; gap: 12px; }
   .proj-nav a { font-size: 10px; }
 
-  /* ── 페이지 레이블 ── */
   .page-label { margin-bottom: 28px; }
 
-  /* ── 섹션 구분선 여백 ── */
   .project { margin-bottom: 60px; padding-bottom: 60px; }
   .proj    { margin-bottom: 52px; padding-bottom: 52px; }
 }
 
-/* ── 소형 폰 (≤ 420px) ────────────────────────────── */
 @media (max-width: 420px) {
   header { padding: 14px 16px 10px; }
 
@@ -174,3 +152,4 @@
   .proj-title    { font-size: 13px; }
   .proj-title-lg { font-size: 12px; }
 }
+*/

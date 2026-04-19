@@ -1,3 +1,4 @@
+<!--
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -23,7 +24,6 @@
       line-height: 1.5;
     }
 
-    /* ── HEADER ─────────────────────────────────── */
     header {
       position: sticky;
       top: 0;
@@ -75,7 +75,6 @@
       text-underline-offset: 3px;
     }
 
-    /* ── GRID ────────────────────────────────────── */
     .grid-wrap {
       padding: 48px 36px 120px;
     }
@@ -86,13 +85,11 @@
       column-gap: 24px;
     }
 
-    /* Card base */
     .card {
       cursor: pointer;
       padding-bottom: 40px;
     }
 
-    /* Number */
     .card-no {
       display: block;
       font-size: 10px;
@@ -101,7 +98,6 @@
       margin-bottom: 10px;
     }
 
-    /* Thumbnail — uniform 3:4 portrait */
     .card-thumb {
       overflow: hidden;
       background: var(--card-bg);
@@ -120,7 +116,6 @@
       transform: scale(1.05);
     }
 
-    /* Info */
     .card-body { margin-top: 13px; }
 
     .card-title {
@@ -136,7 +131,6 @@
       letter-spacing: 0.03em;
     }
 
-    /* ── CARD FADE-IN ───────────────────────────── */
     .card {
       opacity: 0;
       transform: translateY(12px);
@@ -146,10 +140,6 @@
     .card.visible { opacity: 1; transform: none; }
     .card.visible:hover { opacity: 0.82; }
 
-    /* ── SCROLL TEXT ─────────────────────────────
-       Large ghost titles drift in from left / right
-       as the user scrolls past each row of cards.
-    ─────────────────────────────────────────────── */
     .grid-wrap { position: relative; overflow: hidden; }
 
     .scroll-title {
@@ -235,7 +225,6 @@
     grid.appendChild(card);
   });
 
-  /* ── Card fade-in observer ── */
   const cardObserver = new IntersectionObserver(
     entries => entries.forEach(e => {
       if (e.isIntersecting) {
@@ -247,14 +236,9 @@
   );
   document.querySelectorAll('.card').forEach(c => cardObserver.observe(c));
 
-  /* ── Scroll title injection ──
-     After each row (every 4 cards), place a large ghost
-     project title from a different project in the background.
-  ── */
   const wrap = document.getElementById('grid');
   const cards = Array.from(wrap.querySelectorAll('.card'));
 
-  // Pick titles from "other" projects to show as ghost text
   const ghostTitles = [
     projects[1].title,
     projects[4].title,
@@ -263,23 +247,18 @@
   const sides = ['from-left', 'from-right', 'from-left'];
 
   ghostTitles.forEach((txt, gi) => {
-    // Anchor ghost text below each row-end card (row 1 → after card 3, etc.)
     const anchorCard = cards[Math.min((gi + 1) * 4 - 1, cards.length - 1)];
 
     const el = document.createElement('div');
     el.className = `scroll-title ${sides[gi]}`;
     el.textContent = txt;
 
-    // Insert after the anchor card's row — wrap is relative, so we'll
-    // position it via a wrapper trick: insert into a zero-height row.
     const spacer = document.createElement('div');
     spacer.style.cssText = 'grid-column: 1 / -1; height: 0; position: relative; overflow: visible;';
     spacer.appendChild(el);
 
-    // Position vertically centred on the spacer
     el.style.top = '-0.6em';
 
-    // Insert spacer after the anchor card in the grid
     anchorCard.after(spacer);
 
     const titleObserver = new IntersectionObserver(
@@ -298,3 +277,4 @@
   <script src="cursor.js"></script>
 </body>
 </html>
+-->
